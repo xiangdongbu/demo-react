@@ -9,9 +9,7 @@ import {
 } from 'antd-mobile-icons';
 import './app.less';
 
-function Home() {
-  return <div>首页</div>;
-}
+import Home from './home';
 
 function Todo() {
   return <div>我的待办</div>;
@@ -69,7 +67,10 @@ const App = () => {
 
   const setRouteActive = (value) => {
     setActive(value);
-    navigate(tabs[value].path);
+    navigate(tabs[value].path, {
+      replace: true,
+      state: tabs[value].title
+    });
   };
 
   return (
@@ -79,12 +80,12 @@ const App = () => {
       </NavBar>
       <div className='content'>
         <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/home' element={<Home />}></Route>
-          <Route path='/todo' element={<Todo />}></Route>
-          <Route path='/message' element={<Message />}></Route>
-          <Route path='/me' element={<PersonalCenter />}></Route>
-          <Route path='*' element={<Home />}></Route>
+          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/todo' element={<Todo />} />
+          <Route path='/message' element={<Message />} />
+          <Route path='/me' element={<PersonalCenter />} />
+          <Route path='*' element={<div>404</div>} />
         </Routes>
       </div>
       <TabBar activeKey={active} onChange={setRouteActive}>
