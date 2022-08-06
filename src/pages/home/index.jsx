@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { Badge, TabBar } from 'antd-mobile';
 
 const Home = () => {
+  const [passData, setPassData] = useState('');
   const location = useLocation();
 
-  const [passData, setPassData] = useState('');
-
   useEffect(() => {
-    console.log('HOME init ', location);
+    console.log(1111, 'home ', location);
     setPassData(location.state);
-  }, [location]);
+  }, [])
 
   return (
     <div>
-      <h1>这里是Home</h1>
-      <div>
-        <span>{`这是传递的参数: ${passData}`}</span>
-      </div>
+      <h1>这里是HOME页</h1>
+      <div>{`这里是HOME获取到的数据： ${passData}`}</div>
     </div>
-  );
-};
+  )
+}
 
 export default Home;
