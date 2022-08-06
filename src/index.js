@@ -2,13 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './pages/app';
+import Detail2 from './pages/detail2';
 import reportWebVitals from './reportWebVitals';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+
+const Root = () => (
+  <Routes>
+    <Route path='/*' element={<App />} />
+    <Route path='/detail2' element={<Detail2 />} />
+  </Routes>
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
-    <App />
+    <Root />
   </HashRouter>
 );
 

@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+  Outlet,
+} from 'react-router-dom';
 import { TabBar, NavBar } from 'antd-mobile';
 import {
   AppOutline,
@@ -10,14 +16,9 @@ import {
 import './app.less';
 
 import Home from './home';
-
-function Todo() {
-  return <div>我的待办</div>;
-}
-
-function Message() {
-  return <div>我的消息</div>;
-}
+import About from './about';
+import Detail from './detail';
+import Meassgae from './message';
 
 function PersonalCenter() {
   return <div>个人中心</div>;
@@ -42,9 +43,9 @@ const tabs = [
   },
   {
     key: '1',
-    title: '我的待办',
+    title: '关于',
     icon: <UnorderedListOutline />,
-    path: '/todo',
+    path: '/about',
   },
   {
     key: '2',
@@ -69,7 +70,7 @@ const App = () => {
     setActive(value);
     navigate(tabs[value].path, {
       replace: true,
-      state: tabs[value].title
+      state: tabs[value].title,
     });
   };
 
@@ -80,12 +81,15 @@ const App = () => {
       </NavBar>
       <div className='content'>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/todo' element={<Todo />} />
-          <Route path='/message' element={<Message />} />
-          <Route path='/me' element={<PersonalCenter />} />
-          <Route path='*' element={<div>404</div>} />
+          <Route path='/'>
+            <Route index element={<Home />} />
+            <Route path='home' element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='message' element={<Meassgae />} />
+            <Route path='me' element={<PersonalCenter />} />
+            <Route path='detail' element={<Detail />} />
+            <Route path='*' element={<div>404</div>} />
+          </Route>
         </Routes>
       </div>
       <TabBar activeKey={active} onChange={setRouteActive}>
