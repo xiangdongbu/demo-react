@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './pages/main';
+import App from './pages/app';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 
