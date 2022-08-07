@@ -9,8 +9,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   const clickJump = () => {
-    navigate('/home/detail', {
-      state: '详情页面'
+    navigate('/home/detail?id=111', {
+      state: '跳转到详情页面传递的数据，testdata'
     });
   };
 
