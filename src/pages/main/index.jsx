@@ -94,7 +94,7 @@ const Main = () => {
             <Route index element={<Home />} />
             <Route path='home' element={<Home />} />
             <Route path='about' element={<About />} />
-            <Route path='about/detail' element={<Detail />} />
+            <Route path='home/detail' element={<Detail />} />
             <Route path='message' element={<Meassgae />} />
             <Route path='me' element={<PersonalCenter />} />
             <Route path='*' element={<div>404</div>} />

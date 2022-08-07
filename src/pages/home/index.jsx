@@ -9,7 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const clickJump = () => {
-    navigate('/about/detail', {
+    navigate('/home/detail', {
       state: '详情页面'
     });
   };
