@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { TabBar, NavBar } from 'antd-mobile';
 import {
@@ -21,8 +21,9 @@ function PersonalCenter() {
 const getDefault = (arr, location) => {
   let res = '0';
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i].path === location.pathname) {
+    if (location.pathname.indexOf(arr[i].path) > -1) {
       res = arr[i].key;
+      break;
     }
   }
   return res;
@@ -60,6 +61,8 @@ const Main = () => {
   const location = useLocation();
   const [active, setActive] = useState(getDefault(tabs, location));
 
+  const [title, setTitle] = useState('');
+
   const setRouteActive = (value) => {
     setActive(value);
     navigate(tabs[value].path, {
@@ -68,10 +71,22 @@ const Main = () => {
     });
   };
 
+  useEffect(() => {
+    setTitle(location.state);
+  }, [location])
+
+  const backA = () => {
+    navigate(-1);
+  };
+
   return (
     <div className='homeWrap'>
-      <NavBar back={null} style={{ '--border-bottom': '1px solid #eee' }}>
-        {tabs[active].title}
+      <NavBar
+        back={location.pathname.indexOf('detail') === -1 && null}
+        onBack={backA}
+        style={{ '--border-bottom': '1px solid #eee' }}
+      >
+        {title}
       </NavBar>
       <div className='content'>
         <Routes>
@@ -79,9 +94,9 @@ const Main = () => {
             <Route index element={<Home />} />
             <Route path='home' element={<Home />} />
             <Route path='about' element={<About />} />
+            <Route path='about/detail' element={<Detail />} />
             <Route path='message' element={<Meassgae />} />
             <Route path='me' element={<PersonalCenter />} />
-            <Route path='detail' element={<Detail />} />
             <Route path='*' element={<div>404</div>} />
           </Route>
         </Routes>
