@@ -1,22 +1,57 @@
-import React from 'react'
-import { Routes, Route, Link, Outlet, useNavigate } from "react-router-dom";
-import { Button } from 'antd-mobile';
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import { Routes, Route, Link, Outlet, useNavigate } from 'react-router-dom';
+import { Button, SideBar, Badge } from 'antd-mobile';
+import './index.less';
 
 const About = () => {
-  const navigate = useNavigate();
+  const tabs = [
+    {
+      key: 'key1',
+      title: '选项一',
+      badge: Badge.dot,
+    },
+    {
+      key: 'key2',
+      title: '选项二',
+      badge: '5',
+    },
+    {
+      key: 'key3',
+      title: '选项三',
+      badge: '99+',
+      disabled: true,
+    },
+  ];
 
-  const clickJump = () => {
-    navigate('/about/detail', {
-      state: '详情页面'
-    });
-  };
+  const [activeKey, setActiveKey] = useState('key1');
 
   return (
-    <div>
-      <h2>这里是about</h2>
-      <Button onClick={clickJump}>跳转到详情</Button>
+    <div className='aboutWrap'>
+      <SideBar onChange={setActiveKey}>
+        {tabs.map((item) => (
+          <SideBar.Item key={item.key} title={item.title} badge={item.badge} />
+        ))}
+      </SideBar>
+      <div className='main'>
+        <div
+          className={classNames('content', activeKey === 'key1' && 'active')}
+        >
+          页面 1
+        </div>
+        <div
+          className={classNames('content', activeKey === 'key2' && 'active')}
+        >
+          页面 2
+        </div>
+        <div
+          className={classNames('content', activeKey === 'key3' && 'active')}
+        >
+          页面 3
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default About;

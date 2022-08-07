@@ -1,0 +1,21 @@
+.aboutWrap {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  .main {
+    flex: 1;
+  }
+
+  .content {
+    height: 100%;
+    display: none;
+    font-size: 32px;
+    color: #cccccc;
+
+    &.active {
+      display: block;
+    }
+  }
+}
