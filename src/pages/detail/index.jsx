@@ -1,5 +1,12 @@
-import React from 'react'
-import { Routes, Route, useNavigate, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import React from 'react';
+import {
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 
 const Detail = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,7 +20,7 @@ const Detail = () => {
       <h4>Detail</h4>
       <p>{`这是获取的传递数据： ${location.state}`}</p>
     </div>
-  )
-}
+  );
+};
 
 export default Detail;

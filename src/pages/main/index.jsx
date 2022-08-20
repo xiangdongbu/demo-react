@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { TabBar, NavBar } from 'antd-mobile';
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from './mainSlice';
 import {
   AppOutline,
   MessageOutline,
@@ -15,7 +17,21 @@ import Detail from '../detail';
 import Meassgae from '../message';
 
 function PersonalCenter() {
-  return <div>个人中心</div>;
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.main.value);
+  const add = () => {
+    dispatch(increment());
+  };
+  const sub = () => {
+    dispatch(decrement());
+  };
+  return (
+    <div>
+      <h1>个人中心 {count}</h1>
+      <button onClick={add}>增加</button>
+      <button onClick={sub}>减少</button>
+    </div>
+  );
 }
 
 const getDefault = (arr, location) => {
@@ -75,7 +91,7 @@ const Main = () => {
     const index = getDefault(tabs, location);
     setTitle(tabs[index].title);
     console.log(111111, location);
-  }, [location])
+  }, [location]);
 
   const backA = () => {
     navigate(-1);
