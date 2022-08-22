@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { TabBar, NavBar } from 'antd-mobile';
 import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from './mainSlice';
+import { decrement, increment, incrementByAmount } from './mainSlice';
 import {
   AppOutline,
   MessageOutline,
@@ -25,11 +25,15 @@ function PersonalCenter() {
   const sub = () => {
     dispatch(decrement());
   };
+  const add10 = () => {
+    dispatch(incrementByAmount(10));
+  };
   return (
     <div>
       <h1>个人中心 {count}</h1>
       <button onClick={add}>增加</button>
       <button onClick={sub}>减少</button>
+      <button onClick={add10}>增加10</button>
     </div>
   );
 }
