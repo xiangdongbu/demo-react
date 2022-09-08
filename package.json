@@ -155,7 +155,7 @@
     ]
   },
   "devDependencies": {
-    "ahooks": "^3.6.2",
+    "ahooks": "^3.7.0",
     "mini-css-extract-plugin": "^2.6.1"
   }
 }

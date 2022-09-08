@@ -38,6 +38,7 @@ function PersonalCenter() {
   );
 }
 
+// 测试文字
 const getDefault = (arr, location) => {
   let res = '0';
   for (let i = 0; i < arr.length; i++) {
