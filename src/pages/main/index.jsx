@@ -15,6 +15,7 @@ import Home from '../home';
 import About from '../about';
 import Detail from '../detail';
 import Meassgae from '../message';
+import { useRef } from 'react';
 
 function PersonalCenter() {
   const dispatch = useDispatch();
@@ -84,6 +85,22 @@ const Main = () => {
 
   const [title, setTitle] = useState('');
 
+  let time1 = useRef();
+  let time2 = useRef();
+
+  useEffect(() => {
+    // time1.current = setInterval(() => {
+    //   console.log('==== time1 ====', time1.current);
+    // }, 2000);
+    // time2.current = setInterval(() => {
+    //   console.log('==== time2 ====', time2.current);
+    // }, 2000);
+    // return () => {
+    //   clearInterval(time1.current);
+    //   clearInterval(time2.current);
+    // };
+  }, []);
+
   const setRouteActive = (value) => {
     setActive(value);
     navigate(tabs[value].path, {
@@ -112,6 +129,14 @@ const Main = () => {
         {title}
       </NavBar>
       <div className='content'>
+        <h1
+          onClick={() => {
+            console.log(7778899);
+            setTitle(new Date().getTime());
+          }}
+        >
+          click---{title}
+        </h1>
         <Routes>
           <Route path='/'>
             <Route index element={<Home />} />
