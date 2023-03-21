@@ -112,7 +112,7 @@ const Main = () => {
   useEffect(() => {
     const index = getDefault(tabs, location);
     setTitle(tabs[index].title);
-    console.log(111111, location);
+    console.log(11111001, location);
   }, [location]);
 
   const backA = () => {
